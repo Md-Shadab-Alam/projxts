@@ -3,13 +3,12 @@ import React from 'react'
 import { login, logout } from './utils'
 import './global.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Container, Navbar, Nav, NavDropdown} from "react-bootstrap";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-  } from "react-router-dom";
+import {Container, Navbar, Nav, NavDropdown} from 'react-bootstrap';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Home from './Components/Home'
+import NewPoll from './Components/NewPoll'
+import PollingStation from './Components/PollingStation'
+
 import getConfig from './config'
 const { networkId } = getConfig(process.env.NODE_ENV || 'development')
 
@@ -32,6 +31,18 @@ return (
 </Navbar.Collapse>
 </Container>
 </Navbar>
+  <Switch>
+    <Route exact path='/'>
+      <Home />
+    </Route>
+    <Route exact path='/PollingStation'>
+      <PollingStation />
+    </Route>
+    <Route exact path='/NewPoll'>
+     <NewPoll />
+    </Route>
+  </Switch>
+  
 </Router>
 );
 }
